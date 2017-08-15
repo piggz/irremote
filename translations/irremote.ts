@@ -12,7 +12,7 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="290"/>
+        <location filename="../qml/pages/FirstPage.qml" line="292"/>
         <source>Load Template</source>
         <translation type="unfinished"></translation>
     </message>

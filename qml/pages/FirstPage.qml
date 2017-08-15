@@ -41,6 +41,7 @@ Page {
 
     property string displayName: ""
     property int columns: 3
+    property string templatePath: ""
 
     ConsumerIRDevice {
         id: irDevice
@@ -63,13 +64,14 @@ Page {
     Label {
         text: "Please open a template by using the\npulley menu"
         anchors.centerIn: parent
-        visible: displayName == ""
+        visible: templatePath == ""
     }
 
     function loadTemplate(path) {
         pageStack.pop();
-        console.log("Loading...", path);
-        templateFile.setSource(path);
+        templatePath = path
+        console.log("Loading...", templatePath);
+        templateFile.setSource(templatePath);
         processTemplate(templateFile.read());
     }
 
