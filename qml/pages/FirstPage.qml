@@ -56,8 +56,14 @@ Page {
 
     Label {
         text: "No IR Device Detected"
-        anchors.fill: parent
+        anchors.centerIn: parent
         visible: !irDevice.hasIR
+    }
+
+    Label {
+        text: "Please open a template by using the\npulley menu"
+        anchors.centerIn: parent
+        visible: displayName == ""
     }
 
     function loadTemplate(path) {
