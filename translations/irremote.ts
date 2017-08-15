@@ -5,14 +5,14 @@
     <name>CoverPage</name>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="38"/>
-        <source>My Cover</source>
+        <source>IR Remote</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="284"/>
+        <location filename="../qml/pages/FirstPage.qml" line="290"/>
         <source>Load Template</source>
         <translation type="unfinished"></translation>
     </message>
