@@ -1,6 +1,12 @@
 #include "consumerirdevice.h"
 #include <QDebug>
 
+/*
+ * Based on code from Dinesh Manajipet (saidinesh5@gmail.com)
+ * from https://github.com/saidinesh5/consumerir-test
+ *
+*/
+
 ConsumerIRDevice::ConsumerIRDevice(QObject *parent) : QObject(parent)
 {
     int err;

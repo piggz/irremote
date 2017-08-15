@@ -1,6 +1,12 @@
 #ifndef CONSUMERIRDEVICE_H
 #define CONSUMERIRDEVICE_H
 
+/*
+ * Based on code from Dinesh Manajipet (saidinesh5@gmail.com)
+ * from https://github.com/saidinesh5/consumerir-test
+ *
+*/
+
 #include <QObject>
 #include <hardware/hardware.h>
 #include <hardware/consumerir.h>
