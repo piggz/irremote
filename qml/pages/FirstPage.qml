@@ -32,6 +32,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import uk.co.piggz.ConsumerIRDevice 1.0
 import uk.co.piggz.FileIO 1.0
+import Nemo.Configuration 1.0
 
 Page {
     id: page
@@ -42,6 +43,11 @@ Page {
     property string displayName: ""
     property int columns: 3
     property string templatePath: ""
+
+    ConfigurationValue {
+        id: lastTemplate
+        key: "/lastUsedTemplate"
+    }
 
     ConsumerIRDevice {
         id: irDevice
@@ -68,6 +74,8 @@ Page {
     }
 
     function loadTemplate(path) {
+        lastTemplate.value = path;
+        lastTemplate.sync();
         pageStack.pop();
         templatePath = path
         console.log("Loading...", templatePath);
@@ -76,13 +84,15 @@ Page {
     }
 
     function processTemplate(content) {
+        var i = 0;
+        var btn;
         //Delete curernt buttons
-        for(var i = remoteGrid.children.length; i > 0 ; i--) {
+        for(i = remoteGrid.children.length; i > 0 ; i--) {
             remoteGrid.children[i-1].destroy()
         }
 
         var lines = content.split("\n");
-        for (var i = 0; i < lines.length; ++i) {
+        for (i = 0; i < lines.length; ++i) {
             var line = lines[i];
             //Skip comments and blank lines.
             if (line.indexOf("#") === 0 || line.trim() === "") {
@@ -97,12 +107,12 @@ Page {
                 continue;
             }
             if (line.indexOf("Button:") === 0) {
-                var btn = line.substring(7).trim().split(":");
+                btn = line.substring(7).trim().split(":");
                 remoteButton.createObject(remoteGrid, {"text":btn[0].trim(), "rawcode": btn[1].trim()})
                 continue;
             }
             if (line.indexOf("IconButton:") === 0) {
-                var btn = line.substring(11).trim().split(":");
+                btn = line.substring(11).trim().split(":");
                 remoteIconButton.createObject(remoteGrid, {"icn":btn[0].trim(), "rawcode": btn[1].trim()})
                 continue;
             }
@@ -278,7 +288,18 @@ Page {
             height: Theme.itemSizeExtraSmall
             visible: true
         }
+    }
 
+    Timer {
+        interval: 500
+        repeat: false
+        running: true
+
+        onTriggered: {
+            if (lastTemplate.value !== "") {
+                loadTemplate(lastTemplate.value);
+            }
+        }
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
