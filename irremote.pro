@@ -49,6 +49,7 @@ DISTFILES += \
     qml/pages/TemplatesPage.qml \
     templates/samsung.irtemplate \
     templates/hisense.irtemplate \
+    templates/LG.irtemplate \
     rpm/irremote.yaml \
     rpm/irremote.spec \
     rpm/irremote.changes.in
