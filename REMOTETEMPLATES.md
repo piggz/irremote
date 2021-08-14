@@ -5,7 +5,7 @@ irremote allows users to add new remotes via templates which are saved on the de
 
 ## Remote Template.
 
-To add new remotes you need the following tempalte. There are plenty of websites where you could find the IR codes for your remote. For exsample [RemoteCentral](http://www.remotecentral.com/cgi-bin/codes/).
+To add new remotes you need the following tempalte. There are plenty of websites where you could find the IR codes for your remote. For example: [RemoteCentral](http://www.remotecentral.com/cgi-bin/codes/).
 
 * Name for the remote
 
